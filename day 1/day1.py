@@ -34,4 +34,15 @@ with open(os.path.join(sys.path[0], "calories.txt"), "r") as f:
         list_of_ints = convert_strings_to_ints(stripped_list)
         list_of_sums.append(sum(list_of_ints))
 
-    print("Largest number of total calories is: ", max(list_of_sums))
+    print("Largest number of calories is:", max(list_of_sums))
+
+    # part 2
+    # find three largest numbers and count them up for total
+    sorted_sums = sorted(list_of_sums, reverse=True)
+    first_place = sorted_sums[0]
+    second_place = sorted_sums[1]
+    third_place = sorted_sums[2]
+    total_calories_ranking = first_place + second_place + third_place
+
+    print(
+        f"1st place: {first_place}\n2nd place: {second_place}\n3rd place: {third_place}\ntotal: {total_calories_ranking}")
