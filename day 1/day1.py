@@ -24,11 +24,14 @@ with open(os.path.join(sys.path[0], "calories.txt"), "r") as f:
     list_of_sums = []
 
     for i in range(len(split_elves)):
+
         if (i == len(split_elves)-1):
-            list_of_sums.append(sum(convert_strings_to_ints(
-                strip_part_of_whitespace(split_elves[223][:-1]))))
+            stripped_list = strip_part_of_whitespace(
+                split_elves[len(split_elves)-1][:-1])  # removing last character of file ("\n") before stripping other whitespace
         else:
-            list_of_sums.append(sum(convert_strings_to_ints(
-                strip_part_of_whitespace(split_elves[i]))))
+            stripped_list = strip_part_of_whitespace(split_elves[i])
+
+        list_of_ints = convert_strings_to_ints(stripped_list)
+        list_of_sums.append(sum(list_of_ints))
 
     print("Largest number of total calories is: ", max(list_of_sums))
